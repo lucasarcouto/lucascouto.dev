@@ -1,10 +1,47 @@
 body.dark {
-  --color-primary: 0, 32, 63; //#00203F
-  --color-secondary: 173, 239, 209; //#ADEFD1;
-  --color-primary-alt: 24, 154, 180; //#189AB4;
-  --color-background: 44, 44, 44; //#2C2C2C;
-  --color-background-alt: 61, 61, 61; //#3D3D3D;
-  --color-foreground: 255, 255, 255; //#FFFFFF;
+  /* Core brand colors (swapped for dark mode) */
+  --color-primary: 0, 32, 63; //#00203F (Navy - now primary bg)
+  --color-secondary: 173, 239, 209; //#ADEFD1 (Mint - now accent)
+  --color-primary-alt: 24, 154, 180; //#189AB4
+
+  /* Background colors */
+  --color-background: 15, 23, 42; //#0F172A (Slate 900)
+  --color-background-alt: 24, 33, 52; //#182134 (Subtle variation)
+  --color-foreground: 248, 250, 252; //#F8FAFC (Light)
+  --color-foreground-muted: 148, 163, 184; //#94A3B8 (Slate 400)
+
+  /* Accent shades for depth */
+  --color-accent-light: 209, 250, 229; //#D1FAE5 (Light mint)
+  --color-accent-dark: 16, 185, 129; //#10B981 (Emerald 500)
+  --color-navy-light: 30, 58, 138; //#1E3A8A (Navy blue 800)
+  --color-navy-dark: 0, 15, 30; //#000F1E (Deep navy)
+
+  /* Gradient stops */
+  --gradient-primary: linear-gradient(
+    135deg,
+    rgb(var(--color-secondary)) 0%,
+    rgb(var(--color-accent-dark)) 100%
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    rgb(var(--color-primary)) 0%,
+    rgb(var(--color-navy-dark)) 100%
+  );
+  --gradient-hero: linear-gradient(135deg, rgba(173, 239, 209, 0.05) 0%, rgba(0, 32, 63, 0.2) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 10px 30px -5px rgba(173, 239, 209, 0.2);
+
+  /* Shape colors for backgrounds */
+  --shape-color-1: 173, 239, 209; /* Mint - still visible on dark bg */
+  --shape-color-2: 104, 170, 170; /* Teal - visible on dark bg (instead of navy) */
+  --shape-color-3: 209, 250, 229; /* Light mint - visible on dark bg */
+
+  /* Images */
   --logo: url('https://www.lucascouto.dev/assets/images/logo_dark.svg');
   --logo-alt: url('https://www.lucascouto.dev/assets/images/logo_light.svg');
   --image-decoration-1: url('https://www.lucascouto.dev/assets/images/image_decoration_dark_1.svg');

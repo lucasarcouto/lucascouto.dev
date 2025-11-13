@@ -1,10 +1,6 @@
-import { HomePage } from '@home'
-import { MainNavigationHeader } from '@ui'
-import { GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Head from 'next/head'
-
-import React from 'react'
+import { HomePage } from '@home/home';
+import { MainNavigationHeader } from '@ui/navigation_header/navigation_header';
+import Head from 'next/head';
 
 export default function Home() {
   return (
@@ -15,13 +11,5 @@ export default function Home() {
       <MainNavigationHeader />
       <HomePage />
     </div>
-  )
-}
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale!))
-    }
-  }
+  );
 }

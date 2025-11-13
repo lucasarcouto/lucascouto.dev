@@ -2,21 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(var(--color-primary));
+  color: rgb(var(--color-secondary));
 }
 
 .navigation-item .link {
   padding: 10px;
-  color: rgb(var(--color-primary));
-}
-
-.navigation-item.past-intro .link {
   color: rgb(var(--color-secondary));
-}
-
-.navigation-item.past-intro:hover {
-  background-color: rgba(var(--color-foreground), 0.2);
-  border-radius: 40px;
 }
 
 body.mobile {
@@ -28,17 +19,5 @@ body.mobile {
 
   .navigation-item {
     width: 100%;
-  }
-
-  .navigation-item:hover {
-    background-color: rgba(var(--color-foreground), 0.2);
-    border-radius: 40px;
-  }
-}
-
-body {
-  .navigation-item:hover {
-    background-color: rgba(var(--color-background), 0.2);
-    border-radius: 40px;
   }
 }

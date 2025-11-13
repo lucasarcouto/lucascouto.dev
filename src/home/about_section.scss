@@ -1,0 +1,313 @@
+.about-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+.about-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-hero);
+  z-index: 0;
+  overflow: hidden;
+  clip-path: inset(0);
+}
+
+.about-section .gradient-orb-1,
+.about-section .gradient-orb-2,
+.about-section .gradient-orb-3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+}
+
+.about-section .gradient-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(var(--shape-color-1), 0.2) 0%, transparent 70%);
+  top: -10%;
+  right: -10%;
+  animation-delay: 0s;
+}
+
+.about-section .gradient-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(var(--shape-color-2), 0.15) 0%, transparent 70%);
+  bottom: -10%;
+  left: -5%;
+  animation-delay: 2s;
+  animation-duration: 10s;
+}
+
+.about-section .gradient-orb-3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(var(--shape-color-1), 0.2) 0%, transparent 70%);
+  top: 50%;
+  right: 5%;
+  animation-delay: 4s;
+  animation-duration: 12s;
+}
+
+.about-section .geometric-shape {
+  position: absolute;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.about-section .shape-cross {
+  width: 8vw;
+  height: 8vw;
+  min-width: 90px;
+  min-height: 90px;
+  max-width: 130px;
+  max-height: 130px;
+  background:
+    linear-gradient(rgba(var(--color-secondary), 0.99), rgba(var(--color-secondary), 0.99)),
+    linear-gradient(rgba(var(--color-secondary), 0.99), rgba(var(--color-secondary), 0.99));
+  background-size:
+    30% 100%,
+    100% 30%;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  top: 25%;
+  right: 45%;
+  animation: rotateSquare 30s linear infinite;
+}
+
+.about-section .shape-ring-half {
+  width: 13vw;
+  height: 13vw;
+  min-width: 150px;
+  min-height: 150px;
+  max-width: 210px;
+  max-height: 210px;
+  border: 4px solid rgba(var(--color-secondary), 0.99);
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  bottom: 7%;
+  right: 7%;
+  animation: rotate360 15s linear infinite reverse;
+}
+
+.about-section .shape-zigzag {
+  width: 12vw;
+  height: 4vw;
+  min-width: 130px;
+  min-height: 45px;
+  max-width: 190px;
+  max-height: 70px;
+  background:
+    linear-gradient(135deg,
+      transparent 45%,
+      rgba(var(--color-secondary), 0.99) 45%,
+      rgba(var(--color-secondary), 0.99) 55%,
+      transparent 55%),
+    linear-gradient(-135deg,
+      transparent 45%,
+      rgba(var(--color-secondary), 0.99) 45%,
+      rgba(var(--color-secondary), 0.99) 55%,
+      transparent 55%);
+  background-size: 30px 100%;
+  bottom: 25%;
+  left: 42%;
+  animation: fadeInOut 14s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.about-section .grid-pattern {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-image:
+    linear-gradient(rgba(var(--color-secondary), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-secondary), 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotateSquare {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  100% {
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0.05;
+  }
+
+  50% {
+    opacity: 0.15;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-image {
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.image-placeholder {
+  aspect-ratio: 1;
+  background: var(--gradient-primary);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+  transform: translateY(0);
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
+}
+
+.about-section.visible .image-placeholder {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.image-decoration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgb(var(--color-secondary));
+  border-radius: 20px;
+  top: 20px;
+  left: 20px;
+  z-index: 0;
+  transition: all 0.3s ease;
+}
+
+.image-wrapper:hover .image-placeholder {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.image-wrapper:hover .image-decoration {
+  top: 28px;
+  left: 28px;
+}
+
+.about-text {
+  opacity: 0;
+  transform: translateX(50px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.about-section.visible .about-text {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: rgb(var(--color-foreground));
+}
+
+.about-description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: rgb(var(--color-foreground-muted));
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+@media (max-width: 968px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .image-wrapper {
+    max-width: 300px;
+  }
+
+  .about-text {
+    transform: translateY(30px);
+  }
+
+  .about-section.visible .about-text {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 4rem 1rem;
+  }
+
+  .about-content {
+    gap: 2rem;
+  }
+}

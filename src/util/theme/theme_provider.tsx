@@ -1,25 +1,23 @@
-import { useTheme } from '@utils/theme/use-theme'
-import { createContext, ReactNode } from 'react'
+import { useTheme } from '@utils/hooks/use-theme';
+import { createContext, ReactNode, useMemo, useCallback } from 'react';
 
 export const ThemeContext = createContext({
   isDarkTheme: false,
-  toggleTheme: () => {}
-})
+  toggleTheme: () => {},
+});
 
-type Props = {
-  children?: ReactNode
+interface ThemeContextProviderProps {
+  children?: ReactNode;
 }
 
-export function ThemeContextProvider(props: Props) {
-  const { isDarkTheme, setIsDarkTheme } = useTheme()
+export function ThemeContextProvider({ children }: Readonly<ThemeContextProviderProps>) {
+  const { isDarkTheme, setIsDarkTheme } = useTheme();
 
-  function toggleTheme() {
-    setIsDarkTheme(!isDarkTheme)
-  }
+  const toggleTheme = useCallback(() => {
+    setIsDarkTheme(!isDarkTheme);
+  }, [isDarkTheme, setIsDarkTheme]);
 
-  return (
-    <ThemeContext.Provider value={{ isDarkTheme: isDarkTheme, toggleTheme }}>
-      {props.children}
-    </ThemeContext.Provider>
-  )
+  const value = useMemo(() => ({ isDarkTheme, toggleTheme }), [isDarkTheme, toggleTheme]);
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
