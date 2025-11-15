@@ -61,7 +61,6 @@
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -148,9 +147,11 @@
   min-height: 150px;
   max-width: 250px;
   max-height: 250px;
-  background: linear-gradient(135deg,
-      rgba(var(--color-secondary), 0.99),
-      rgba(var(--color-secondary), 0.99));
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-secondary), 0.99),
+    rgba(var(--color-secondary), 0.99)
+  );
   transform: rotate(45deg);
   top: 20%;
   right: 8%;
@@ -187,7 +188,6 @@
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     transform: scale(1);
@@ -221,7 +221,6 @@
 }
 
 @keyframes floatShape {
-
   0%,
   100% {
     transform: translateY(0) rotate(0deg);

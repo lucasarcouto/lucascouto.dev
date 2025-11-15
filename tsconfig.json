@@ -18,6 +18,10 @@
     "paths": {
       "@api/*": ["src/api/*"],
       "@home/*": ["src/home/*"],
+      "@lib/*": ["src/lib/*"],
+      "@app-sanity/*": ["src/sanity/*"],
+      "@sanity-types": ["src/types/index.ts"],
+      "@sanity-types/*": ["src/types/*"],
       "@styles": ["src/styles/globals.scss"],
       "@ui": ["src/ui/index.ts"],
       "@ui/*": ["src/ui/*"],

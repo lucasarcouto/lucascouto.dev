@@ -1,24 +1,22 @@
 import { useState, useEffect } from 'react';
+import { Hero } from '@sanity-types/sanity.types';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  hero: Hero | null;
+}
+
+export default function HeroSection({ hero }: Readonly<HeroSectionProps>) {
   const [titleIndex, setTitleIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-
-  function scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
 
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
-      setTitleIndex(prev => (prev + 1) % titles.length);
+      setTitleIndex(prev => (prev + 1) % (hero?.titles?.length ?? 0));
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [hero?.titles?.length]);
 
   return (
     <section className="hero-section" id="home">
@@ -36,33 +34,45 @@ export default function HeroSection() {
         <div className="grid-pattern"></div>
       </div>
 
-      <div className="hero-content">
-        <div className={`hero-text ${isVisible ? 'visible' : ''}`}>
-          <p className="hero-greeting">Hello! I&apos;m</p>
-          <h1 className="hero-name">Lucas Couto</h1>
-          <div className="title-container">
-            <h2 className="hero-title">
-              <span className="title-text" key={titleIndex}>
-                {titles[titleIndex]}
-              </span>
-            </h2>
-          </div>
-          <p className="hero-description">
-            Crafting exceptional digital experiences with modern technologies and creative
-            solutions.
-          </p>
-          <div className="hero-cta">
-            <button className="btn-default cta-button" onClick={() => scrollToSection('projects')}>
-              View My Work
-            </button>
-            <button className="cta-button-secondary" onClick={() => scrollToSection('contact')}>
-              Get In Touch
-            </button>
-          </div>
-        </div>
-      </div>
+      <HeroContent hero={hero} isVisible={isVisible} titleIndex={titleIndex} />
     </section>
   );
 }
 
-const titles = ['Full-Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Creator'];
+interface HeroContentProps {
+  hero: Hero | null;
+  isVisible: boolean;
+  titleIndex: number;
+}
+function HeroContent({ hero, isVisible, titleIndex }: Readonly<HeroContentProps>) {
+  if (!hero) return <></>;
+
+  function scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  return (
+    <div className="hero-content">
+      <div className={`hero-text ${isVisible ? 'visible' : ''}`}>
+        <p className="hero-greeting">{hero?.greeting}</p>
+        <h1 className="hero-name">{hero?.name}</h1>
+        <div className="title-container">
+          <h2 className="hero-title">
+            <span className="title-text" key={titleIndex}>
+              {hero?.titles?.[titleIndex]}
+            </span>
+          </h2>
+        </div>
+        <p className="hero-description">{hero?.description}</p>
+        <div className="hero-cta">
+          <button className="btn-default cta-button" onClick={() => scrollToSection('projects')}>
+            View My Work
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

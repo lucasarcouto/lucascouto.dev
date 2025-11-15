@@ -60,7 +60,6 @@
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -84,9 +83,11 @@
   min-height: 130px;
   max-width: 180px;
   max-height: 180px;
-  background: linear-gradient(135deg,
-      rgba(var(--color-secondary), 0.99),
-      rgba(var(--color-secondary), 0.99));
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-secondary), 0.99),
+    rgba(var(--color-secondary), 0.99)
+  );
   clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
   top: 20%;
   left: 15%;
@@ -109,8 +110,12 @@
   max-width: 280px;
   background: rgba(var(--color-secondary), 0.99);
   mask:
-    radial-gradient(var(--R) at left 50% bottom calc(-1 * var(--p)), var(--_g)) calc(50% - 2 * var(--size)) calc(50% - var(--size) / 2 - var(--b) / 2) / calc(4 * var(--size)) calc(var(--size) + var(--b)) repeat-x,
-    radial-gradient(var(--R) at left 50% top calc(-1 * var(--p)), var(--_g)) 50% calc(50% + var(--size) / 2 + var(--b) / 2) / calc(4 * var(--size)) calc(var(--size) + var(--b)) repeat-x;
+    radial-gradient(var(--R) at left 50% bottom calc(-1 * var(--p)), var(--_g))
+      calc(50% - 2 * var(--size)) calc(50% - var(--size) / 2 - var(--b) / 2) / calc(4 * var(--size))
+      calc(var(--size) + var(--b)) repeat-x,
+    radial-gradient(var(--R) at left 50% top calc(-1 * var(--p)), var(--_g)) 50%
+      calc(50% + var(--size) / 2 + var(--b) / 2) / calc(4 * var(--size))
+      calc(var(--size) + var(--b)) repeat-x;
   bottom: 18%;
   right: 15%;
   animation: fadeInOut 12s ease-in-out infinite;
@@ -118,7 +123,6 @@
 }
 
 @keyframes fadeInOut {
-
   0%,
   100% {
     opacity: 0.05;
@@ -150,9 +154,11 @@
   min-height: 140px;
   max-width: 190px;
   max-height: 190px;
-  background: linear-gradient(135deg,
-      rgba(var(--color-secondary), 0.99),
-      rgba(var(--color-secondary), 0.99));
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-secondary), 0.99),
+    rgba(var(--color-secondary), 0.99)
+  );
   transform: rotate(15deg);
   top: 12%;
   right: 12%;
@@ -187,7 +193,6 @@
 }
 
 @keyframes rotateShape {
-
   0%,
   100% {
     transform: rotate(0deg) scale(1);
@@ -199,7 +204,6 @@
 }
 
 @keyframes floatShape {
-
   0%,
   100% {
     transform: translateY(0) rotate(15deg);
@@ -211,7 +215,6 @@
 }
 
 @keyframes morphShape {
-
   0%,
   100% {
     border-radius: 0%;

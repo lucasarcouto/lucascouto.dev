@@ -1,14 +1,8 @@
 import { useState, useRef } from 'react';
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-}
+import { Project } from '@sanity-types/sanity.types';
+import { getImageUrl } from '@lib/sanity.image';
+import Image from 'next/image';
+import { PortableText } from '@portabletext/react';
 
 interface ProjectCardProps {
   project: Project;
@@ -57,18 +51,29 @@ export default function ProjectCard({
       onMouseLeave={handleMouseLeave}
     >
       <div className="card-image">
-        <div className="image-placeholder">
-          <span>{project.title}</span>
-        </div>
+        {project.image ? (
+          <Image
+            src={getImageUrl(project.image, 800)}
+            alt={project.image.alt || project.title}
+            fill
+            style={{ objectFit: 'cover' }}
+          />
+        ) : (
+          <div className="image-placeholder">
+            <span>{project.title}</span>
+          </div>
+        )}
         <div className="image-overlay"></div>
       </div>
 
       <div className="card-content">
         <h3 className="project-title">{project.title}</h3>
-        <p className="project-description">{project.description}</p>
+        <div className="project-description">
+          <PortableText value={project.description} />
+        </div>
 
         <div className="technologies">
-          {project.technologies.map(tech => (
+          {project.technologies?.map(tech => (
             <span key={tech} className="tech-tag">
               {tech}
             </span>

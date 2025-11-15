@@ -1,6 +1,11 @@
 import { useScrollAnimation } from '@utils/hooks/use-scroll-animation';
+import { Skill } from '@sanity-types/sanity.types';
 
-export default function SkillsSection() {
+interface SkillsSectionProps {
+  skills: Skill[];
+}
+
+export default function SkillsSection({ skills }: Readonly<SkillsSectionProps>) {
   const { elementRef, isVisible } = useScrollAnimation<HTMLElement>({
     threshold: 0.2,
   });
@@ -31,7 +36,7 @@ export default function SkillsSection() {
         <div className="skills-grid">
           {skills.map((skill, index) => (
             <div
-              key={skill.name}
+              key={skill._id}
               className={`skill-item size${skill.size}`}
               style={{
                 animationDelay: `${(index * 0.05).toFixed(2)}s`,
@@ -45,31 +50,3 @@ export default function SkillsSection() {
     </section>
   );
 }
-
-interface Skill {
-  name: string;
-  size: number;
-}
-
-const skills: Skill[] = [
-  { name: 'JavaScript', size: 3 },
-  { name: 'TypeScript', size: 3 },
-  { name: 'React', size: 3 },
-  { name: 'Next.js', size: 3 },
-  { name: 'Node.js', size: 3 },
-  { name: 'Python', size: 2 },
-  { name: 'GraphQL', size: 2 },
-  { name: 'REST API', size: 3 },
-  { name: 'PostgreSQL', size: 2 },
-  { name: 'MongoDB', size: 2 },
-  { name: 'Redis', size: 2 },
-  { name: 'Docker', size: 2 },
-  { name: 'Kubernetes', size: 2 },
-  { name: 'AWS', size: 2 },
-  { name: 'Git', size: 3 },
-  { name: 'TailwindCSS', size: 3 },
-  { name: 'SCSS', size: 2 },
-  { name: 'Figma', size: 2 },
-  { name: 'Jest', size: 2 },
-  { name: 'CI/CD', size: 2 },
-];

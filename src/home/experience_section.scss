@@ -58,7 +58,6 @@
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -135,11 +134,13 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(to bottom,
-      transparent 0%,
-      rgb(var(--color-secondary)) 10%,
-      rgb(var(--color-secondary)) 90%,
-      transparent 100%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(var(--color-secondary)) 10%,
+    rgb(var(--color-secondary)) 90%,
+    transparent 100%
+  );
   transform: translateX(-50%);
 }
 
