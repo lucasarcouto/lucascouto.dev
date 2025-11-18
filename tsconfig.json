@@ -19,7 +19,7 @@
       "@api/*": ["src/api/*"],
       "@home/*": ["src/home/*"],
       "@lib/*": ["src/lib/*"],
-      "@app-sanity/*": ["src/sanity/*"],
+      "@sanity/*": ["src/core/sanity/*"],
       "@sanity-types": ["src/core/sanity/types/index.ts"],
       "@sanity-types/*": ["src/core/sanity/types/*"],
       "@styles": ["src/styles/globals.scss"],
