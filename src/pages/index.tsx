@@ -9,13 +9,12 @@ interface HomeProps {
   data: HomePageData;
 }
 
-export default function Home({ data }: Readonly<HomeProps>) {
-  const siteUrl = 'https://lucascouto.dev';
-  const title = 'Lucas Couto | Software Developer';
-  const description =
-    'Portfolio of Lucas Couto - Software Developer specializing in web and mobile development with React, Next.js, Flutter, React Native, and modern technologies.';
-  const imageUrl = `${siteUrl}/og-image.png`;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+const title = process.env.NEXT_PUBLIC_SITE_TITLE || '';
+const description = process.env.NEXT_PUBLIC_SITE_DESCRIPTION || '';
+const imageUrl = `${siteUrl}${process.env.NEXT_PUBLIC_OG_IMAGE || ''}`;
 
+export default function Home({ data }: Readonly<HomeProps>) {
   return (
     <div>
       <Head>
