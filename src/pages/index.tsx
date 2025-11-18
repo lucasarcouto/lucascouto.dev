@@ -9,10 +9,16 @@ interface HomeProps {
   data: HomePageData;
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-const title = process.env.NEXT_PUBLIC_SITE_TITLE || '';
-const description = process.env.NEXT_PUBLIC_SITE_DESCRIPTION || '';
-const imageUrl = `${siteUrl}${process.env.NEXT_PUBLIC_OG_IMAGE || ''}`;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const title = process.env.NEXT_PUBLIC_SITE_TITLE;
+const description = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
+const ogImage = process.env.NEXT_PUBLIC_OG_IMAGE;
+
+if (!siteUrl || !title || !description || !ogImage) {
+  throw new Error('Missing required environment variables for SEO metadata');
+}
+
+const imageUrl = `${siteUrl}${ogImage}`;
 
 export default function Home({ data }: Readonly<HomeProps>) {
   return (
