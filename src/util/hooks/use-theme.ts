@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 const DARK_THEME = 'dark_theme_key';
@@ -11,8 +11,6 @@ const DARK_THEME = 'dark_theme_key';
  * no longer depends on the system defined theme.
  */
 export function useTheme() {
-  const [isDarkTheme, setIsDarkTheme] = useState<boolean>();
-
   const systemPreference = useMediaQuery(
     {
       query: '(prefers-color-scheme: dark)',
@@ -20,47 +18,74 @@ export function useTheme() {
     undefined,
   );
 
-  const isDark = useMemo<boolean>(() => {
-    // Checking if the app is running in the client-side. If window is undefined,
-    // it means this hook was called server-side.
-    if (typeof globalThis.window !== 'undefined') {
-      const darkTheme = localStorage.getItem(DARK_THEME);
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(!!systemPreference);
+  const [isClient, setIsClient] = useState(false);
 
-      if (darkTheme) {
-        return darkTheme == 'true';
-      }
+  // After mounting on client, check localStorage and update if needed
+  useEffect(() => {
+    setIsClient(true);
+
+    const storedTheme = safeGetLocalStorage(DARK_THEME);
+
+    if (storedTheme !== null) {
+      setIsDarkTheme(storedTheme === 'true');
     }
-
-    // If there's no theme defined in our current state, we return the system
-    // defined one.
-    return isDarkTheme ?? !!systemPreference;
-  }, [systemPreference, isDarkTheme]);
+  }, []);
 
   // Once the user toggles the theme, we add or remove the [dark] class to
   // the body, which prompts the whole app's theme to change.
   useEffect(() => {
-    if (isDark) {
+    if (!isClient) return;
+
+    if (isDarkTheme) {
       document.body.classList.add('dark');
     } else {
       document.body.classList.remove('dark');
     }
-  }, [isDark]);
+  }, [isDarkTheme, isClient]);
 
-  const setDarkTheme = useCallback(
-    (isDarkTheme: boolean) => {
-      // Same as above. If window is undefined, it means this function was called
-      // on the server-side.
-      if (typeof globalThis.window === 'undefined') return;
-
-      // Persisting the theme to the [localStorage] and our current state.
-      localStorage.setItem(DARK_THEME, isDarkTheme.toString());
-      setIsDarkTheme(isDarkTheme);
-    },
-    [setIsDarkTheme],
-  );
+  const setDarkTheme = useCallback((newTheme: boolean) => {
+    safeSetLocalStorage(DARK_THEME, newTheme.toString());
+    setIsDarkTheme(newTheme);
+  }, []);
 
   return {
-    isDarkTheme: isDark,
+    isDarkTheme,
     setIsDarkTheme: setDarkTheme,
   };
+}
+
+/**
+ * Safely get item from localStorage with error handling.
+ * Returns null if localStorage is unavailable or throws an error.
+ */
+function safeGetLocalStorage(key: string): string | null {
+  if (!globalThis.window) {
+    return null;
+  }
+
+  try {
+    return localStorage.getItem(key);
+  } catch (error) {
+    console.warn('localStorage.getItem failed:', error);
+    return null;
+  }
+}
+
+/**
+ * Safely set item to localStorage with error handling.
+ * Returns true if successful, false otherwise.
+ */
+function safeSetLocalStorage(key: string, value: string): boolean {
+  if (!globalThis.window) {
+    return false;
+  }
+
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (error) {
+    console.warn('localStorage.setItem failed:', error);
+    return false;
+  }
 }
