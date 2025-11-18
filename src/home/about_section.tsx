@@ -1,7 +1,7 @@
 import { useScrollAnimation } from '@utils/hooks/use-scroll-animation';
-import { About } from '@sanity-types/sanity.types';
+import { About } from 'src/core/sanity/types/sanity.types';
 import { PortableText } from '@portabletext/react';
-import { getImageUrl } from '@lib/sanity.image';
+import { getImageUrl } from 'src/core/sanity/sanity.image';
 import Image from 'next/image';
 
 interface AboutSectionProps {

@@ -1,5 +1,5 @@
-import { client } from '@lib/sanity.client';
-import { Project, Experience, Skill, About, Hero, SocialLink } from '@sanity-types/sanity.types';
+import { client } from 'src/core/sanity/sanity.client';
+import { Project, Experience, Skill, About, Hero, SocialLink } from 'src/core/sanity/types/sanity.types';
 
 // Projects
 export async function getProjects(): Promise<Project[]> {

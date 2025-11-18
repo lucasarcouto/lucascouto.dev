@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '@utils/hooks/use-scroll-animation';
-import { Skill } from '@sanity-types/sanity.types';
+import { Skill } from 'src/core/sanity/types/sanity.types';
 
 interface SkillsSectionProps {
   skills: Skill[];

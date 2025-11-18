@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import { Project } from '@sanity-types/sanity.types';
-import { getImageUrl } from '@lib/sanity.image';
+import { Project } from 'src/core/sanity/types/sanity.types';
+import { getImageUrl } from 'src/core/sanity/sanity.image';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 

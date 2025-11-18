@@ -2,8 +2,8 @@ import { HomePage } from '@home/home';
 import { MainNavigationHeader } from '@ui/navigation_header/navigation_header';
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
-import { getAllHomeContent } from '@lib/sanity.queries';
-import { HomePageData } from '@sanity-types/sanity.types';
+import { getAllHomeContent } from 'src/core/sanity/sanity.queries';
+import { HomePageData } from 'src/core/sanity/types/sanity.types';
 
 interface HomeProps {
   data: HomePageData;

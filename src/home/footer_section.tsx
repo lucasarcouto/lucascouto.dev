@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SocialLink } from '@sanity-types/sanity.types';
+import { SocialLink } from 'src/core/sanity/types/sanity.types';
 
 interface FooterSectionProps {
   socialLinks: SocialLink[];

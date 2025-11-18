@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '@utils/hooks/use-scroll-animation';
-import { Experience } from '@sanity-types/sanity.types';
+import { Experience } from 'src/core/sanity/types/sanity.types';
 import { PortableText } from '@portabletext/react';
 
 interface ExperienceSectionProps {

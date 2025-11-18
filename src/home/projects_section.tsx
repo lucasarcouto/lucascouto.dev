@@ -1,6 +1,6 @@
 import { useScrollAnimation } from '@utils/hooks/use-scroll-animation';
 import ProjectCard from '@home/project_card';
-import { Project } from '@sanity-types/sanity.types';
+import { Project } from 'src/core/sanity/types/sanity.types';
 
 interface ProjectsSectionProps {
   projects: Project[];

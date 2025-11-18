@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Hero } from '@sanity-types/sanity.types';
+import { Hero } from 'src/core/sanity/types/sanity.types';
 
 interface HeroSectionProps {
   hero: Hero | null;
