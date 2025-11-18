@@ -11,11 +11,15 @@ export default function HeroSection({ hero }: Readonly<HeroSectionProps>) {
 
   useEffect(() => {
     setIsVisible(true);
-    const interval = setInterval(() => {
-      setTitleIndex(prev => (prev + 1) % (hero?.titles?.length ?? 0));
-    }, 3000);
 
-    return () => clearInterval(interval);
+    if (hero?.titles && hero.titles.length > 0) {
+      const interval = setInterval(() => {
+        setTitleIndex(prev => (prev + 1) % hero.titles.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else {
+      setTitleIndex(0);
+    }
   }, [hero?.titles?.length]);
 
   return (
@@ -47,13 +51,6 @@ interface HeroContentProps {
 function HeroContent({ hero, isVisible, titleIndex }: Readonly<HeroContentProps>) {
   if (!hero) return <></>;
 
-  function scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
   return (
     <div className="hero-content">
       <div className={`hero-text ${isVisible ? 'visible' : ''}`}>
@@ -75,4 +72,11 @@ function HeroContent({ hero, isVisible, titleIndex }: Readonly<HeroContentProps>
       </div>
     </div>
   );
+}
+
+function scrollToSection(sectionId: string) {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
 }

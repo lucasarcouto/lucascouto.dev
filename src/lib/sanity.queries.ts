@@ -103,12 +103,21 @@ export async function getSocialLinks(): Promise<SocialLink[]> {
 
 // Fetch all content for homepage
 export async function getAllHomeContent() {
+  const [projects, experiences, skills, about, hero, socialLinks] = await Promise.all([
+    getProjects(),
+    getExperiences(),
+    getSkills(),
+    getAbout(),
+    getHero(),
+    getSocialLinks(),
+  ]);
+
   return {
-    projects: await getProjects(),
-    experiences: await getExperiences(),
-    skills: await getSkills(),
-    about: await getAbout(),
-    hero: await getHero(),
-    socialLinks: await getSocialLinks(),
+    projects,
+    experiences,
+    skills,
+    about,
+    hero,
+    socialLinks,
   };
 }

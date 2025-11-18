@@ -11,9 +11,9 @@ export default function FooterSection({ socialLinks }: Readonly<FooterSectionPro
   const [ripples, setRipples] = useState<{ [key: string]: boolean }>({});
 
   function handleSocialClick(id: string) {
-    setRipples({ ...ripples, [id]: true });
+    setRipples(prev => ({ ...prev, [id]: true }));
     setTimeout(() => {
-      setRipples({ ...ripples, [id]: false });
+      setRipples(prev => ({ ...prev, [id]: false }));
     }, 600);
   }
 
@@ -36,8 +36,8 @@ export default function FooterSection({ socialLinks }: Readonly<FooterSectionPro
                 <a
                   key={social._id}
                   href={social.url}
-                  target={social.platform !== 'email' ? '_blank' : undefined}
-                  rel={social.platform !== 'email' ? 'noopener noreferrer' : undefined}
+                  target={social.platform === 'email' ? undefined : '_blank'}
+                  rel={social.platform === 'email' ? undefined : 'noopener noreferrer'}
                   className={`${'social-link'} ${ripples[social._id] ? 'ripple' : ''}`}
                   onClick={() => handleSocialClick(social._id)}
                   aria-label={social.name}

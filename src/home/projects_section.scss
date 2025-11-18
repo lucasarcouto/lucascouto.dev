@@ -1,3 +1,5 @@
+@use 'shared_animations';
+
 .projects-section {
   position: relative;
   min-height: 100vh;
@@ -54,17 +56,6 @@
   right: 5%;
   animation-delay: 4s;
   animation-duration: 12s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 .projects-section .grid-pattern {

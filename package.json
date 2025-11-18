@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=20.19 <22 || >=22.12"
   },
   "scripts": {
     "dev": "next dev",
@@ -24,16 +24,12 @@
     "@types/react": "^19.2.4",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.22",
-    "eslint": "^9.39.1",
-    "eslint-config-next": "^16.0.2",
     "html-react-parser": "^5.2.8",
-    "i18next": "^25.6.2",
-    "next": "^16.0.2",
+    "next": "^16.0.3",
     "next-sanity": "^11.6.6",
     "postcss": "^8.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-multi-carousel": "^2.8.6",
     "react-responsive": "^10.0.1",
     "sanity": "^4.15.0",
     "sass": "^1.94.0",
@@ -43,8 +39,13 @@
   },
   "devDependencies": {
     "@sanity/types": "^4.15.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.3",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
     "tsx": "^4.20.6"
+  },
+  "overrides": {
+    "glob": "^11.0.4"
   }
 }

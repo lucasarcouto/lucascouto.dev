@@ -39,7 +39,16 @@ export default defineType({
     },
     prepare(selection) {
       const { title, size } = selection;
-      const sizeLabel = size === 3 ? 'Large' : size === 2 ? 'Medium' : 'Small';
+
+      let sizeLabel: string;
+      if (size === 3) {
+        sizeLabel = 'Large';
+      } else if (size === 2) {
+        sizeLabel = 'Medium';
+      } else {
+        sizeLabel = 'Small';
+      }
+
       return {
         title: title,
         subtitle: `Size: ${sizeLabel}`,

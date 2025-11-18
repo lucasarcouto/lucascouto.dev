@@ -1,7 +1,24 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.query.secret !== process.env.REVALIDATE_SECRET) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
+  let secret: string | undefined;
+
+  if (req.body?.secret) {
+    secret = req.body.secret;
+  } else if (req.headers.authorization) {
+    const authHeader = req.headers.authorization;
+    if (authHeader.startsWith('Bearer ')) {
+      secret = authHeader.substring(7);
+    } else {
+      secret = authHeader;
+    }
+  }
+
+  if (secret !== process.env.REVALIDATE_SECRET) {
     return res.status(401).json({ message: 'Invalid token' });
   }
 
@@ -10,6 +27,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.json({ revalidated: true });
   } catch (err) {
-    return res.status(500).send(`Error revalidating: ${err}`);
+    console.error('Error revalidating:', err instanceof Error ? err.message : err);
+    if (err instanceof Error && err.stack) {
+      console.error('Stack trace:', err.stack);
+    }
+    return res.status(500).json({ message: 'Internal Server Error' });
   }
 }

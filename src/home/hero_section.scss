@@ -1,3 +1,5 @@
+@use 'shared_animations';
+
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -58,17 +60,6 @@
   right: 20%;
   animation-delay: 4s;
   animation-duration: 12s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 .geometric-shape {

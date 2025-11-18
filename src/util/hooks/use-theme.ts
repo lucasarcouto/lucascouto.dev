@@ -23,7 +23,7 @@ export function useTheme() {
   const isDark = useMemo<boolean>(() => {
     // Checking if the app is running in the client-side. If window is undefined,
     // it means this hook was called server-side.
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       const darkTheme = localStorage.getItem(DARK_THEME);
 
       if (darkTheme) {
@@ -50,7 +50,7 @@ export function useTheme() {
     (isDarkTheme: boolean) => {
       // Same as above. If window is undefined, it means this function was called
       // on the server-side.
-      if (typeof window == 'undefined') return;
+      if (typeof globalThis.window === 'undefined') return;
 
       // Persisting the theme to the [localStorage] and our current state.
       localStorage.setItem(DARK_THEME, isDarkTheme.toString());
