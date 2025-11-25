@@ -33,8 +33,8 @@ export default function ExperienceSection({ experiences }: Readonly<ExperienceSe
 
         <div className="timeline">
           <div className="timeline-line"></div>
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={experience._id} experience={experience} index={index} />
+          {experiences.map(experience => (
+            <ExperienceCard key={experience._id} experience={experience} />
           ))}
         </div>
       </div>
@@ -44,23 +44,19 @@ export default function ExperienceSection({ experiences }: Readonly<ExperienceSe
 
 interface ExperienceCardProps {
   experience: Experience;
-  index: number;
 }
 
-function ExperienceCard({ experience, index }: Readonly<ExperienceCardProps>) {
+function ExperienceCard({ experience }: Readonly<ExperienceCardProps>) {
   const { elementRef, isVisible } = useScrollAnimation<HTMLDivElement>({
     threshold: 0.3,
     triggerOnce: true,
   });
 
-  const isLeft = index % 2 === 0;
-
   return (
-    <div
-      ref={elementRef}
-      className={`timeline-item ${isLeft ? 'left' : 'right'} ${isVisible ? 'visible' : ''}`}
-    >
-      <div className="timeline-dot"></div>
+    <div ref={elementRef} className={`timeline-item ${isVisible ? 'visible' : ''}`}>
+      <div className="timeline-dot">
+        <span className="pulse-ring"></span>
+      </div>
       <div className="experience-card">
         <div className="card-header">
           <h3 className="role">{experience.role}</h3>
@@ -81,12 +77,16 @@ function ExperienceCard({ experience, index }: Readonly<ExperienceCardProps>) {
         )}
 
         {experience.technologies && experience.technologies.length > 0 && (
-          <div className="technologies">
-            {experience.technologies.map(tech => (
-              <span key={tech} className="tech-badge">
-                {tech}
-              </span>
-            ))}
+          <div className="experience-technologies-container">
+            <h5 className="experience-technologies-title">Technologies Used</h5>
+
+            <div className="experience-technologies">
+              {experience.technologies.map(tech => (
+                <span key={tech} className="experience-tech-badge">
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         )}
       </div>

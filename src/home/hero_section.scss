@@ -75,7 +75,7 @@
   min-height: 100px;
   max-width: 150px;
   max-height: 150px;
-  border: 3px solid rgb(var(--color-secondary));
+  border: 3px solid rgba(var(--color-secondary), 0.2);
   border-radius: 50%;
   top: 18%;
   left: 12%;
@@ -89,7 +89,7 @@
   min-height: 70px;
   max-width: 100px;
   max-height: 100px;
-  border: 2px solid rgb(var(--color-secondary));
+  border: 2px solid rgba(var(--color-secondary), 0.2);
   border-radius: 50%;
   bottom: 28%;
   right: 15%;
