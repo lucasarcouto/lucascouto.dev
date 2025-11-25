@@ -11,9 +11,6 @@ export default function ProjectsSection({ projects }: Readonly<ProjectsSectionPr
     threshold: 0.1,
   });
 
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
-
   return (
     <section
       ref={elementRef}
@@ -29,26 +26,15 @@ export default function ProjectsSection({ projects }: Readonly<ProjectsSectionPr
 
       <div className="container">
         <h2 className="section-title">
-          Featured <span className="gradient-text">Projects</span>
+          <span className="gradient-text">Projects</span>
         </h2>
         <p className="section-subtitle">A showcase of my recent work and personal projects</p>
 
-        <div className="featured-grid">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard key={project._id} project={project} delay={index * 0.2} featured />
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <ProjectCard key={project._id} project={project} delay={index * 0.15} />
           ))}
         </div>
-
-        {otherProjects.length > 0 && (
-          <>
-            <h3 className="other-projects-title">Other Projects</h3>
-            <div className="projects-grid">
-              {otherProjects.map((project, index) => (
-                <ProjectCard key={project._id} project={project} delay={index * 0.15} />
-              ))}
-            </div>
-          </>
-        )}
       </div>
     </section>
   );

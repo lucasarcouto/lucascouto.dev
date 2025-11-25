@@ -11,24 +11,6 @@ export async function getProjects(): Promise<Project[]> {
       description,
       image,
       technologies,
-      featured,
-      liveUrl,
-      githubUrl,
-      order
-    }`,
-  );
-}
-
-export async function getFeaturedProjects(): Promise<Project[]> {
-  return client.fetch(
-    `*[_type == "project" && featured == true] | order(order asc) {
-      _id,
-      title,
-      slug,
-      description,
-      image,
-      technologies,
-      featured,
       liveUrl,
       githubUrl,
       order

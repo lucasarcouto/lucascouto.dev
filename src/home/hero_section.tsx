@@ -70,6 +70,18 @@ function HeroContent({ hero, isVisible, titleIndex }: Readonly<HeroContentProps>
           </button>
         </div>
       </div>
+      <div className={`hero-logo ${isVisible ? 'visible' : ''}`}>
+        <img
+          src="/assets/images/logo_light.svg"
+          alt="LC Logo"
+          className="hero-logo-img logo-light"
+        />
+        <img
+          src="/assets/images/logo_dark.svg"
+          alt="LC Logo"
+          className="hero-logo-img logo-dark"
+        />
+      </div>
     </div>
   );
 }

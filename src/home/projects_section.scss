@@ -111,21 +111,6 @@
   transform: translateY(0);
 }
 
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-
-.other-projects-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: rgb(var(--color-foreground));
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -137,7 +122,6 @@
     padding: 4rem 1rem;
   }
 
-  .featured-grid,
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;

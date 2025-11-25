@@ -50,12 +50,6 @@ export default defineType({
       of: [{ type: 'string' }],
     }),
     defineField({
-      name: 'featured',
-      title: 'Featured',
-      type: 'boolean',
-      initialValue: false,
-    }),
-    defineField({
       name: 'liveUrl',
       title: 'Live URL',
       type: 'url',
@@ -76,13 +70,11 @@ export default defineType({
     select: {
       title: 'title',
       media: 'image',
-      featured: 'featured',
     },
     prepare(selection) {
-      const { title, media, featured } = selection;
+      const { title, media } = selection;
       return {
         title: title,
-        subtitle: featured ? 'Featured Project' : 'Project',
         media: media,
       };
     },
