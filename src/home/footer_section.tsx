@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { SocialLink } from 'src/core/sanity/types/sanity.types';
 
 interface FooterSectionProps {
@@ -10,12 +10,24 @@ export default function FooterSection({ socialLinks }: Readonly<FooterSectionPro
 
   const [ripples, setRipples] = useState<{ [key: string]: boolean }>({});
 
+  const timeoutIdsRef = useRef<Set<NodeJS.Timeout>>(new Set());
+
   function handleSocialClick(id: string) {
     setRipples(prev => ({ ...prev, [id]: true }));
-    setTimeout(() => {
+
+    const timeoutId = setTimeout(() => {
       setRipples(prev => ({ ...prev, [id]: false }));
+      timeoutIdsRef.current.delete(timeoutId);
     }, 600);
+
+    timeoutIdsRef.current.add(timeoutId);
   }
+
+  useEffect(() => {
+    return () => {
+      timeoutIdsRef.current.forEach(timeoutId => clearTimeout(timeoutId));
+    };
+  }, []);
 
   return (
     <footer className="footer" id="contact">

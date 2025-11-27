@@ -1,8 +1,16 @@
+import crypto from 'crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
+  }
+
+  const envSecret = process.env.REVALIDATE_SECRET;
+
+  if (!envSecret) {
+    console.error('REVALIDATE_SECRET environment variable is not configured');
+    return res.status(500).json({ message: 'Server configuration error' });
   }
 
   let secret: string | undefined;
@@ -11,6 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     secret = req.body.secret;
   } else if (req.headers.authorization) {
     const authHeader = req.headers.authorization;
+    
     if (authHeader.startsWith('Bearer ')) {
       secret = authHeader.substring(7);
     } else {
@@ -18,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   }
 
-  if (secret !== process.env.REVALIDATE_SECRET) {
+  if (!secret || !constantTimeCompare(secret, envSecret)) {
     return res.status(401).json({ message: 'Invalid token' });
   }
 

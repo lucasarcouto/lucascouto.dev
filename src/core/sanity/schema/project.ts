@@ -26,7 +26,7 @@ export default defineType({
       title: 'Description',
       type: 'array',
       of: [{ type: 'block' }],
-      validation: Rule => Rule.required(),
+      validation: Rule => Rule.required().min(1),
     }),
     defineField({
       name: 'image',

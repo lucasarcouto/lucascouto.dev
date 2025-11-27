@@ -41,20 +41,22 @@ export function MainNavigationHeader() {
         />
         <div className={cn('navigation-menu-items', isMobileMenuOpen ? 'open' : '')}>
           <ul>
-            <NavigationItem label="Home" linkTo="#home" toggleMobileMenu={toggleMobileMenu} />
-            <NavigationItem label="About" linkTo="#about" toggleMobileMenu={toggleMobileMenu} />
-            <NavigationItem label="Skills" linkTo="#skills" toggleMobileMenu={toggleMobileMenu} />
+            <NavigationItem label="Home" linkTo="#home" isMobile={windowData.isMobile} toggleMobileMenu={toggleMobileMenu} />
+            <NavigationItem label="About" linkTo="#about" isMobile={windowData.isMobile} toggleMobileMenu={toggleMobileMenu} />
+            <NavigationItem label="Skills" linkTo="#skills" isMobile={windowData.isMobile} toggleMobileMenu={toggleMobileMenu} />
             <NavigationItem
               label="Projects"
               linkTo="#projects"
+              isMobile={windowData.isMobile}
               toggleMobileMenu={toggleMobileMenu}
             />
             <NavigationItem
               label="Experience"
               linkTo="#experience"
+              isMobile={windowData.isMobile}
               toggleMobileMenu={toggleMobileMenu}
             />
-            <NavigationItem label="Contact" linkTo="#contact" toggleMobileMenu={toggleMobileMenu} />
+            <NavigationItem label="Contact" linkTo="#contact" isMobile={windowData.isMobile} toggleMobileMenu={toggleMobileMenu} />
             <ThemeToggle />
           </ul>
         </div>

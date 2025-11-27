@@ -11,7 +11,7 @@ export default defineType({
       type: 'array',
       of: [{ type: 'block' }],
       description: 'Your biography/about section',
-      validation: Rule => Rule.required(),
+      validation: Rule => Rule.required().min(1),
     }),
     defineField({
       name: 'profileImage',
@@ -25,6 +25,7 @@ export default defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
+          validation: (Rule) => Rule.required().error('Alt text is required'),
         },
       ],
     }),

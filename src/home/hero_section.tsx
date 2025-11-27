@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Hero } from 'src/core/sanity/types/sanity.types';
 
 interface HeroSectionProps {
@@ -9,18 +9,22 @@ export default function HeroSection({ hero }: Readonly<HeroSectionProps>) {
   const [titleIndex, setTitleIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
+  const titlesKey = useMemo(() => JSON.stringify(hero?.titles), [hero?.titles]);
+
   useEffect(() => {
     setIsVisible(true);
+    setTitleIndex(0);
 
-    if (hero?.titles && hero.titles.length > 0) {
-      const interval = setInterval(() => {
-        setTitleIndex(prev => (prev + 1) % hero.titles.length);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else {
-      setTitleIndex(0);
+    if (!hero?.titles || hero.titles.length === 0) {
+      return;
     }
-  }, [hero?.titles?.length]);
+
+    const interval = setInterval(() => {
+      setTitleIndex(prev => (prev + 1) % hero.titles.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [titlesKey, hero?.titles]);
 
   return (
     <section className="hero-section" id="home">

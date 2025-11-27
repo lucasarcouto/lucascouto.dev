@@ -27,14 +27,14 @@ body.dark {
     rgb(var(--color-primary)) 0%,
     rgb(var(--color-navy-dark)) 100%
   );
-  --gradient-hero: linear-gradient(135deg, rgba(173, 239, 209, 0.05) 0%, rgba(0, 32, 63, 0.2) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(var(--color-secondary), 0.05) 0%, rgba(var(--color-primary), 0.2) 100%);
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
-  --shadow-accent: 0 10px 30px -5px rgba(173, 239, 209, 0.2);
+  --shadow-accent: 0 10px 30px -5px rgba(var(--color-secondary), 0.2);
 
   /* Shape colors for backgrounds */
   --shape-color-1: 173, 239, 209; /* Mint - still visible on dark bg */

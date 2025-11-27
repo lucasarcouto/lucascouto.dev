@@ -70,8 +70,8 @@ function ExperienceCard({ experience }: Readonly<ExperienceCardProps>) {
 
         {experience.achievements && experience.achievements.length > 0 && (
           <ul className="achievements">
-            {experience.achievements.map(achievement => (
-              <li key={achievement}>{achievement}</li>
+            {experience.achievements.map((achievement, index) => (
+              <li key={`${achievement}-${index}`}>{achievement}</li>
             ))}
           </ul>
         )}
@@ -81,8 +81,8 @@ function ExperienceCard({ experience }: Readonly<ExperienceCardProps>) {
             <h5 className="experience-technologies-title">Technologies Used</h5>
 
             <div className="experience-technologies">
-              {experience.technologies.map(tech => (
-                <span key={tech} className="experience-tech-badge">
+              {experience.technologies.map((tech, index) => (
+                <span key={`${tech}-${index}`} className="experience-tech-badge">
                   {tech}
                 </span>
               ))}

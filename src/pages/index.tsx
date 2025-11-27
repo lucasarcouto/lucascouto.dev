@@ -18,7 +18,7 @@ if (!siteUrl || !title || !description || !ogImage) {
   throw new Error('Missing required environment variables for SEO metadata');
 }
 
-const imageUrl = `${siteUrl}${ogImage}`;
+const imageUrl = new URL(ogImage, siteUrl).toString();
 
 export default function Home({ data }: Readonly<HomeProps>) {
   return (
