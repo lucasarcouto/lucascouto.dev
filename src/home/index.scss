@@ -1,5 +1,7 @@
-@import 'about_me.scss';
-@import 'contact.scss';
-@import 'intro.scss';
-@import 'work/work_details.scss';
-@import 'work/work.scss';
+@use 'hero_section.scss';
+@use 'about_section.scss';
+@use 'skills_section.scss';
+@use 'projects_section.scss';
+@use 'project_card.scss';
+@use 'experience_section.scss';
+@use 'footer_section.scss';

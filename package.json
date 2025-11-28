@@ -3,51 +3,48 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=20.19 <22 || >=22.12"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen"
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "seed": "tsx scripts/seed-data.ts"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^4.0.1",
-    "@graphql-codegen/typescript": "^4.0.1",
-    "@graphql-codegen/typescript-operations": "^4.0.1",
-    "@types/node": "20.4.2",
-    "@types/react": "18.2.15",
-    "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.45.0",
-    "eslint-config-next": "13.4.10",
-    "form-data": "^4.0.0",
-    "graphql": "^16.7.1",
-    "graphql-request": "^6.1.0",
-    "html-react-parser": "^4.2.0",
-    "i18next": "^23.2.11",
-    "mailgun.js": "^10.2.3",
-    "moment": "^2.29.4",
+    "@portabletext/react": "^5.0.0",
+    "@sanity/client": "^7.12.1",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^4.15.0",
+    "@sentry/nextjs": "^10.27.0",
+    "@tailwindcss/postcss": "^4.1.17",
     "next": "^16.0.3",
-    "next-i18next": "^14.0.0",
+    "next-sanity": "^11.6.6",
     "postcss": "^8.5.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-i18next": "^13.0.2",
-    "react-multi-carousel": "^2.8.4",
-    "react-responsive": "^9.0.2",
-    "sass": "^1.63.6",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.1.6",
-    "zod": "^4.1.12"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "none"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-responsive": "^10.0.1",
+    "sanity": "^4.15.0",
+    "sass": "^1.94.0",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@graphql-codegen/add": "^5.0.0"
+    "@sanity/types": "^4.15.0",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.6"
+  },
+  "overrides": {
+    "glob": "^11.0.4"
   }
 }

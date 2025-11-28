@@ -1,58 +1,58 @@
 .dropdown {
-    width: fit-content;
-    position: relative;
+  width: fit-content;
+  position: relative;
 }
 
 .dropdown .button {
-    width: 100%;
-    padding: 8px;
-    cursor: pointer;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 24px;
+  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 24px;
 }
 
 .dropdown .button:hover {
-    background-color: rgba(var(--color-foreground), 0.1);
+  background-color: rgba(var(--color-foreground), 0.1);
 }
 
 .dropdown .button h1 {
-    width: 100%;
+  width: 100%;
 }
 
 .dropdown .button .arrow-dropdown {
-    min-width: 16px;
-    min-height: 16px;
-    background-color: rgb(var(--color-primary-alt));
-    -webkit-mask-image: var(--arrow_dropdown);
-    mask-image: var(--arrow_dropdown);
-    mask-size: contain;
-    margin: 12px;
+  min-width: 16px;
+  min-height: 16px;
+  background-color: rgb(var(--color-primary-alt));
+  -webkit-mask-image: var(--arrow_dropdown);
+  mask-image: var(--arrow_dropdown);
+  mask-size: contain;
+  margin: 12px;
 }
 
 .dropdown .dropdown-menu {
-    width: fit-content;
-    min-width: max-content;
-    position: absolute;
-    background-color: rgb(var(--color-background-alt));
-    border-radius: 50px;
-    padding: 16px;
-    z-index: 10;
-    right: 0;
+  width: fit-content;
+  min-width: max-content;
+  position: absolute;
+  background-color: rgb(var(--color-background-alt));
+  border-radius: 50px;
+  padding: 16px;
+  z-index: 10;
+  right: 0;
 }
 
 .dropdown .dropdown-menu.inline-menu {
-    position: relative;
+  position: relative;
 }
 
 .dropdown .dropdown-menu li {
-    padding: 8px 16px;
-    border-radius: 50px;
-    cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
 }
 
 .dropdown .dropdown-menu li:hover {
-    background-color: rgba(var(--color-foreground), 0.1);
+  background-color: rgba(var(--color-foreground), 0.1);
 }

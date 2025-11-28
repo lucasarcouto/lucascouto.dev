@@ -1,11 +1,11 @@
+@use 'dark_theme.scss';
+@use 'light_theme.scss';
+@use '../home/index.scss' as home;
+@use '../ui/index.scss' as ui;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import 'dark_theme.scss';
-@import 'light_theme.scss';
-@import '../home/index.scss';
-@import '../ui/index.scss';
 
 html {
   --scroll-behavior: smooth !important;
@@ -26,6 +26,9 @@ body {
 
   color: rgb(var(--color-foreground));
   background-color: rgb(var(--color-background));
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -71,12 +74,135 @@ button:focus {
 }
 
 .btn-default {
-  color: rgb(var(--color-background));
-  background-color: rgb(var(--color-primary-alt));
   padding: 12px 32px;
   border-radius: 50px;
+  border: none;
+  background: rgb(var(--color-secondary));
+  color: rgb(var(--color-background));
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .btn-default:hover {
-  filter: brightness(0.95);
+  filter: brightness(1.1);
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Scroll animation classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Card hover effects */
+.card-tilt {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-tilt:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
 }

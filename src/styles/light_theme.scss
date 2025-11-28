@@ -1,12 +1,43 @@
 body {
-  --color-primary: 173, 239, 209; //#ADEFD1;
-  --color-secondary: 0, 32, 63; //#00203F;
-  --color-primary-alt: 104, 170, 170; //#68AAAA;
-  --color-background: 255, 255, 255; //#FFFFFF;
-  --color-background-alt: 233, 233, 233; //#E9E9E9;
-  --color-foreground: 44, 44, 44; //#2C2C2C;
-  --logo: url('https://www.lucascouto.dev/assets/images/logo_light.svg');
-  --logo-alt: url('https://www.lucascouto.dev/assets/images/logo_dark.svg');
-  --image-decoration-1: url('https://www.lucascouto.dev/assets/images/image_decoration_light_1.svg');
-  --image-decoration-2: url('https://www.lucascouto.dev/assets/images/image_decoration_light_2.svg');
+  /* Core brand colors */
+  --color-primary: 173, 239, 209; //#ADEFD1 (Mint)
+  --color-secondary: 0, 32, 63; //#00203F (Navy)
+  --color-primary-alt: 104, 170, 170; //#68AAAA
+
+  /* Background colors */
+  --color-background: 255, 255, 255; //#FFFFFF
+  --color-background-alt: 248, 250, 252; //#F8FAFC (Slightly warm)
+  --color-foreground: 30, 41, 59; //#1E293B (Slate 800)
+  --color-foreground-muted: 100, 116, 139; //#64748B (Slate 500)
+
+  /* Accent shades for depth */
+  --color-accent-light: 209, 250, 229; //#D1FAE5 (Light mint)
+  --color-accent-dark: 5, 150, 105; //#059669 (Dark mint)
+  --color-navy-light: 30, 58, 138; //#1E3A8A (Navy blue 800)
+  --color-navy-dark: 0, 32, 63; //#00203F (Original navy)
+
+  /* Gradient stops */
+  --gradient-primary: linear-gradient(
+    135deg,
+    rgb(var(--color-primary)) 0%,
+    rgb(var(--color-accent-dark)) 100%
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    rgb(var(--color-secondary)) 0%,
+    rgb(var(--color-navy-light)) 100%
+  );
+  --gradient-hero: linear-gradient(135deg, rgba(173, 239, 209, 0.1) 0%, rgba(0, 32, 63, 0.05) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-accent: 0 10px 30px -5px rgba(173, 239, 209, 0.3);
+
+  /* Shape colors for backgrounds */
+  --shape-color-1: 173, 239, 209; /* Mint - visible on light bg */
+  --shape-color-2: 0, 32, 63; /* Navy - visible on light bg */
+  --shape-color-3: 104, 170, 170; /* Teal - visible on light bg */
 }

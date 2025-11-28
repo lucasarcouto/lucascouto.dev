@@ -1,10 +1,3 @@
-@import 'checkbox.scss';
-@import 'decorated_container.scss';
-@import 'decorated_picture.scss';
-@import 'dropdown_menu.scss';
-@import 'footer.scss';
-@import 'icons/icon.scss';
-@import 'locale_switcher.scss';
-@import 'logo_loading.scss';
-@import 'navigation_header/index.scss';
-@import 'theme_toggle.scss';
+@use 'dropdown_menu.scss';
+@use 'navigation_header/index.scss';
+@use 'theme_toggle.scss';

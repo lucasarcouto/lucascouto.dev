@@ -2,6 +2,16 @@
   width: fit-content;
   cursor: pointer;
   padding: 24px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  border: none;
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .header-mobile-menu {
+    display: none;
+  }
 }
 
 .header-mobile-menu .toggle-container {

@@ -20,17 +20,32 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@api": [
-        "src/api/index.ts"
+      "@api/*": [
+        "src/api/*"
       ],
-      "@home": [
-        "src/home/index.ts"
+      "@home/*": [
+        "src/home/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@sanity/*": [
+        "src/core/sanity/*"
+      ],
+      "@sanity-types": [
+        "src/core/sanity/types/index.ts"
+      ],
+      "@sanity-types/*": [
+        "src/core/sanity/types/*"
       ],
       "@styles": [
         "src/styles/globals.scss"
       ],
       "@ui": [
         "src/ui/index.ts"
+      ],
+      "@ui/*": [
+        "src/ui/*"
       ],
       "@utils/*": [
         "src/util/*"

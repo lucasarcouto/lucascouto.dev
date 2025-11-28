@@ -1,12 +1,12 @@
-import { cn } from '@utils/cn'
-import { useState } from 'react'
+import { cn } from '@utils/cn';
+import { useState } from 'react';
 
-type DropdownMenuProps = {
-  className?: string
-  items: string[]
-  selectedItem: string
-  isInline?: boolean
-  onItemSelected?: (selectedItem: string) => void
+interface DropdownMenuProps {
+  className?: string;
+  items: string[];
+  selectedItem: string;
+  isInline?: boolean;
+  onItemSelected?: (selectedItem: string) => void;
 }
 
 export function DropdownMenu({
@@ -14,17 +14,17 @@ export function DropdownMenu({
   items,
   selectedItem,
   isInline = false,
-  onItemSelected
-}: DropdownMenuProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  onItemSelected,
+}: Readonly<DropdownMenuProps>) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen)
+  function handleToggle() {
+    setIsOpen(!isOpen);
   }
 
-  const handleItemClick = (item: any) => {
-    onItemSelected?.(item)
-    setIsOpen(false)
+  function handleItemClick(item: string) {
+    onItemSelected?.(item);
+    setIsOpen(false);
   }
 
   return (
@@ -40,10 +40,10 @@ export function DropdownMenu({
               <li key={index} onClick={() => handleItemClick(item)}>
                 <h1>{item}</h1>
               </li>
-            )
+            );
           })}
         </ul>
       )}
     </div>
-  )
+  );
 }

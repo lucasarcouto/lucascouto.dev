@@ -1,21 +1,26 @@
-import { cn } from '@utils/cn'
+import { cn } from '@utils/cn';
 
-type Props = {
-  className?: string
-  onClick: () => void
+interface NavigationMobileMenuToggleProps {
+  className?: string;
+  onClick: () => void;
 }
 
-export function NavigationMobileMenuToggle({ className, onClick }: Props) {
+export function NavigationMobileMenuToggle({
+  className,
+  onClick,
+}: Readonly<NavigationMobileMenuToggleProps>) {
   return (
-    <div
+    <button
+      type="button"
       className={cn('header-mobile-menu visible md:invisible', className)}
       onClick={onClick}
+      aria-label="Toggle mobile menu"
     >
       <div className="toggle-container">
         <div className="toggle" />
         <div className="toggle" />
         <div className="toggle" />
       </div>
-    </div>
-  )
+    </button>
+  );
 }
