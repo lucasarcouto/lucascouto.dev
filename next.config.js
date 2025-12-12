@@ -23,17 +23,21 @@ module.exports = withSentryConfig(nextConfig, {
   // Upload source maps for better error traces
   widenClientFileUpload: true,
 
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
-  disableLogger: true,
-
   // Hides source maps from generated client bundles
   hideSourceMaps: true,
 
-  // Automatically instrument React components
-  reactComponentAnnotation: {
-    enabled: true,
-  },
-
   // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers
   tunnelRoute: '/monitoring',
+
+  // Webpack-specific Sentry options
+  webpack: {
+    // Automatically tree-shake Sentry logger statements to reduce bundle size
+    treeshake: {
+      removeDebugLogging: true,
+    },
+    // Automatically instrument React components
+    reactComponentAnnotation: {
+      enabled: true,
+    },
+  },
 });
